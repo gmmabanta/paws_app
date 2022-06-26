@@ -18,16 +18,25 @@ const FieldName = styled.label`
     margin-right: 0.5em;
 `;
 
-class FieldInput extends Component {
-    render() {
-        return (
-            <>
-                <FieldName htmlFor={this.props.type === 'password' ? this.props.type : this.props.id }>{ this.props.fieldname }</FieldName>
-                <Input id={this.props.type === 'password' ? this.props.type : this.props.id } type={this.props.type}/>
-            </>
-            
-      )
-    }
-  }
+function FieldInput (props) {
+    const { type, id, value, onChangeHandler, fieldname } = props;
+
+    return (
+        <>
+            <FieldName 
+                htmlFor={type === 'password' ? type : id } 
+                value={value} 
+                onChange={(e) => onChangeHandler(e.target.value)}
+            >{ fieldname }
+            </FieldName>
+            <Input 
+                id={type === 'password' ? type : id } 
+                type={type} 
+                value={value} 
+                onChange={(e) => onChangeHandler(e.target.value)}/>
+        </>
+        
+    );
+}
   
 export default FieldInput
