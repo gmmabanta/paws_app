@@ -13,7 +13,7 @@ const Input = styled.input`
     height: 25px;
 `;
 
-const FieldName = styled.div`
+const FieldName = styled.label`
     margin-left: 0.5em;
     margin-right: 0.5em;
 `;
@@ -22,8 +22,8 @@ class FieldInput extends Component {
     render() {
         return (
             <>
-                <FieldName>{ this.props.fieldname }</FieldName>
-                <Input type="text" />
+                <FieldName htmlFor={this.props.type === 'password' ? this.props.type : this.props.id }>{ this.props.fieldname }</FieldName>
+                <Input id={this.props.type === 'password' ? this.props.type : this.props.id } type={this.props.type}/>
             </>
             
       )
