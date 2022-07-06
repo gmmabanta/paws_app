@@ -11,6 +11,9 @@ const LoginButton = styled.button`
     display: block;
     margin-top: 10px;
     height: 40px;
+    &:hover {
+        opacity: 80%;
+    }
 `;
 
 export default LoginButton

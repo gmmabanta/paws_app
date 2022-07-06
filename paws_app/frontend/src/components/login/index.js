@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import LoginButton from "../common/LoginButton";
 import styled from "styled-components";
 import FieldInput from "../common/FieldInput";
@@ -25,75 +25,49 @@ const LogoWrapper = styled.div`
     margin: auto;
 `;
 
-const FormWrapper = styled.div`
+const FormWrapper = styled.form`
     margin-top: 30px;
     display: grid;
     justify-content: center;
     align-items: center;
 `;
 
-const todoItems = [
-  {
-    id: 1,
-    title: "Nature walk in the park",
-    description: "Visit the park with my friends",
-    completed: true
-  },
+function Login () {
+  const [username, setUsername] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
 
-  {
-    id: 2,
-    title: "Visit",
-    description: "Got to my aunt's place",
-    completed: true
-  },
-
-  {
-    id: 3,
-    title: "Write",
-    description: "Do an article about anthropology",
-    completed: true
-  },
-];
-
-class Login extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {todoItems};
-    };
-
-    render() {
-        return (
-            <LoginWrapper>
-                <LogoWrapper>
-                    <img src="http://thecreativecat.net/wp-content/uploads/PAWS-logo.jpg" alt="PAWS" height='200px'/>
-                </LogoWrapper>
-                    <FormWrapper>
-                        <FieldInput fieldname="Username" />
-                        <FieldInput fieldname="Password" />
-                        <LoginButton>LOGIN</LoginButton>
-                    </FormWrapper>
-                
-                                
-            </LoginWrapper>
-    //     <main className="content">
-    //     <LoginButton>Button</LoginButton>
-    //     <div className="row">
-    //       <div className="col-md-6 col-sm-10 mx-auto p-0">
-    //         <div className="card p-3">
-    //           <ul className="list-group list-group-flush">
-    //           {this.state.todoItems.map(item => (
-    //           <div>
-    //             <h1>{item.title}</h1>
-    //             <span>{item.description}</span>
-    //           </div>
-    //           ))}
-    //           </ul>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </main>
-      )
-    }
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log('submitted');
+    console.log('username', username);
+    console.log('password', password1);
+    // handle login POST request
   }
-  
+
+  return (
+    <LoginWrapper>
+      <LogoWrapper>
+        <img src="http://thecreativecat.net/wp-content/uploads/PAWS-logo.jpg" alt="PAWS" height='200px'/>
+      </LogoWrapper>
+      <FormWrapper onSubmit={submitHandler}>
+        <FieldInput 
+          id="username" 
+          fieldname="Username" 
+          type="text" 
+          value={username} 
+          onChangeHandler={setUsername}
+        />
+        <FieldInput 
+          fieldname="Password" 
+          type="password" 
+          value={password1} 
+          onChangeHandler={setPassword1}
+        />
+        <LoginButton type="submit">LOGIN</LoginButton>
+      </FormWrapper>        
+    </LoginWrapper>
+  );
+} 
+
 export default Login;
