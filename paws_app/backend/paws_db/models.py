@@ -83,5 +83,12 @@ class UserAuth(models.Model):
     class Meta:
         db_table = 'user_auth'
 
+    USER_ROLE = [
+        ('gst', 'Guest'),
+        ('adm', 'Admin'),
+        ('vet', 'Veterinarian')
+    ]
+
     uname = models.CharField(primary_key=True, max_length=50, blank=False, null=False)
     pw = models.CharField(max_length=50, blank=False, null=False)
+    role = models.CharField(max_length=3, choices=USER_ROLE, blank=False, null=False, default='gst')
