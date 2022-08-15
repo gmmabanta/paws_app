@@ -92,3 +92,4 @@ class UserAuth(models.Model):
     uname = models.CharField(primary_key=True, max_length=50, blank=False, null=False)
     pw = models.CharField(max_length=50, blank=False, null=False)
     role = models.CharField(max_length=3, choices=USER_ROLE, blank=False, null=False, default='gst')
+    disp_name = models.CharField(max_length=100, blank=False, null=False)
