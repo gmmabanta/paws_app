@@ -73,11 +73,14 @@ class ClientContact(models.Model):
     contact_type = models.CharField(max_length=1, choices=CONTACT_CHOICES)
     contact = models.CharField(max_length=40)
 
-# class MedHist(models.Model):
-#     anim = models.ForeignKey(Animal.id, on_delete=models.CASCADE)
-#     date = models.DateField()
-#     wt = models.DecimalField(max_digits=5, decimal_places=2)
-#     ## TODO: add details for findings, vaccination, deworming, spay/neuter
+class MedHist(models.Model):
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    date = models.DateField()
+    wt = models.DecimalField(max_digits=5, decimal_places=2)
+    ## TODO: add details for findings, vaccination, deworming, spay/neuter
+    # findings = 
+    # is_vaccination = 
+    
 
 class UserAuth(models.Model):
     class Meta:
